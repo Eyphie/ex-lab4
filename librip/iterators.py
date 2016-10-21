@@ -1,14 +1,8 @@
 # Итератор для удаления дубликатов
 class Unique(object):
     def __init__(self, items, **kwargs):
-        self.ignore_case = 0
         self.items = iter(items) if isinstance(items, list) else items
-        for k, v in kwargs.items():
-            if k == 'ignore_case':
-                if v:
-                    self.ignore_case = 1
-                else:
-                    self.ignore_case = 0
+        self.ignore_case = kwargs.get("ignore_case", False)
         self.lst = []
         pass
 
@@ -31,4 +25,5 @@ class Unique(object):
 
     def __iter__(self):
         return self
+
 
